@@ -124,6 +124,21 @@ nohup npm start > backend-output.log 2>&1 < /dev/null &
     **Update the Backend API URL in Environment File**
     
     - Edit `.env.sample` and set `VITE_BACKEND_URL` to your backend's public IP and port (e.g., `http://<backend-public-ip>:<port>`).
+
+        **Configure MongoDB Network Interfaces (Optional)**
+
+        - To allow MongoDB to accept connections on a private IP, edit the `mongod.conf` file (usually at `/etc/mongod.conf`):
+          ```yaml
+          net:
+            port: 27017
+            bindIp: 127.0.0.1,<your-private-ip>
+          ```
+        - Replace `<your-private-ip>` with your server's private IP address (e.g., `172.31.18.243`).
+        - Restart MongoDB for changes to take effect:
+          ```bash
+          sudo systemctl restart mongod
+          ```
+
     - Copy the sample environment file:
     
       ```bash
