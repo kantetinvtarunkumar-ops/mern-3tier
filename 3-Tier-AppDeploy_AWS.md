@@ -121,9 +121,9 @@ nohup npm start > backend-output.log 2>&1 < /dev/null &
    npm i
 3. **Configure Environment Variables**
 
-    > **Update the Backend API URL in Environment File**
-    >
-    > - Edit `.env.sample` and set `VITE_BACKEND_URL` to your backend's public IP and port (e.g., `http://<backend-public-ip>:<port>`).
+    **Update the Backend API URL in Environment File**
+    
+    - Edit `.env.sample` and set `VITE_BACKEND_URL` to your backend's public IP and port (e.g., `http://<backend-public-ip>:<port>`).
     - Copy the sample environment file:
     
       ```bash
@@ -144,3 +144,31 @@ nohup npm start > backend-output.log 2>&1 < /dev/null &
 5. **Access the Frontend**
 
     - Open your browser and navigate to `http://<frontend-public-ip>:<port>`.
+
+    ## Creating a Post from the Website
+
+    1. **Open the Frontend Application**
+
+        - In your browser, go to `http://<frontend-public-ip>:<port>`.
+
+    2. **Navigate to the "Create Post" Page**
+
+        - Click on the "Create Post" or similar button/link in the navigation menu.
+        <img width="1857" height="933" alt="Image" src="https://github.com/user-attachments/assets/6fc05c13-63a2-4608-b091-f71384a79f96" />
+
+    3. **Fill Out the Post Form**
+
+        - Enter the required details such as title, content, and any other fields.
+        <img width="1536" height="893" alt="Image" src="https://github.com/user-attachments/assets/58bdeec7-2d37-4953-9c11-f9b28f9a5cd9" />
+
+        - Click the "Submit" 
+        - If successful, you should see your new post listed on the homepage or posts page.
+
+    5. **Verify in the Backend**
+
+        - You can check the backend database to confirm the post was created:
+          ```bash
+          mongosh
+          use wanderlust
+          db.posts.find().pretty()
+          ```
